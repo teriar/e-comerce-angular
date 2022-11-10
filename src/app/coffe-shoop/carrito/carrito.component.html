@@ -1,0 +1,38 @@
+
+<div *ngIf="carro; else sinCarro" class="caroo ">
+    <h1><i class="pi pi-shopping-cart text-center"style="font-size: 2rem"></i> Compras</h1><br>
+     <h3> Total: {{carro.total|currency:'CLP $'}}</h3> <br>
+
+    <!-- <ul>
+        <li *ngFor="let item of carro.productos">
+            {{item.nombre}} Total: {{item.cantidad}}
+        </li>
+    </ul> -->
+       <div class="tabla ">
+        
+<p-table class="" [value]="carro.productos" responsiveLayout="scroll" electionMode="single"  dataKey="code">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nombre</th>
+            <th>Total</th>
+            
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-producto>
+        <tr [pSelectableRow]="producto">
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.cantidad}}</td>
+            <td><button pButton type="button" icon="pi pi-minus" label="Eliminar" (click)="eliminarProducto(producto)" class="p-button-danger p-button-outlined"></button></td>
+            
+        </tr>
+    </ng-template>
+</p-table>
+
+       </div>
+       <br>
+     <button pButton type="button" label="Pagar" class="p-button-outlined"></button>
+</div>
+
+<ng-template #sinCarro>
+    <h1>Sin Compras</h1>
+</ng-template>

@@ -1,0 +1,109 @@
+
+<!-- contenedor -->
+
+
+
+<div class="card">
+
+
+    <p-card>
+<div class="flex flex-wrap  contenedor">
+
+    <!-- contenedor formulario -->
+<div class="">
+<form [formGroup]="formulario" autocomplete="off" (ngSubmit)="enviarFormulario" >
+     <!-- nombre -->
+    <div class="field">
+        <label for="nombre">Username</label>
+        <input id="nombre" 
+               formControlName="nombre" 
+               type="text" 
+               class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" >
+        <small *ngIf="campoNoValido('nombre')" class="text-red-500" >El nombre debe ser de un minimo de tres letras.</small>
+    </div>
+        
+        <!-- precio y categoria -->
+        <div class="formgrid grid">
+            <div class="field col">
+                <label for="precio">Precio</label>
+                <input id="precio" 
+                       formControlName="precio" 
+                       type="number" 
+                       class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                <small *ngIf="campoNoValido('precio')"  class="text-red-500" >Debe ser un numero Mayor o igual a uno</small>
+            </div>
+            <div class="field col">
+                <label for="categoria">Categoria</label>
+                <select  id="categoria" 
+                         formControlName="categoria"  
+                         class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" 
+                         style="appearance: auto">
+                    <option *ngFor="let item of categorias?.categorias" value="{{item._id}}">{{item.nombre}}</option>
+                    
+                </select>
+            </div>
+        </div>
+        <!-- descripcion -->
+        <div>
+            <div class="field col-12">
+                <label for="descripcion">Descripcion</label>
+                <textarea 
+                formControlName="descripcion" 
+                id="descripcion" type="text" 
+                rows="4" 
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>
+                <small *ngIf="campoNoValido('descripcion')" class="text-red-500" >se requiere descripcion</small>
+            </div>
+        </div>
+        <!-- imagen -->
+        <div class="field grid">
+            <label for="imagen" class="col-fixed" style="width:100px">Imagen:</label>
+            <div class="col">
+                <input id="imagen" 
+                       formControlName="imagen" 
+                       type="file" 
+                       class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+                        (change)="capturaImagen($event)">
+                       
+                <small *ngIf="campoNoValido('imagen')" class="text-red-500"> Se requiere imagen</small>
+            </div>
+            
+        </div>
+        <div class="field grid">
+            <label for="habilitado" class="col-fixed" style="width:100px">Habilitado</label>
+            <div class="col">
+                <p-inputSwitch formControlName="habilitado"></p-inputSwitch> 
+            </div>
+        </div>
+         <div class="field col">
+            <button pButton type="button" (click)="enviarFormulario()" label="Guardar" class="p-button-success"></button>
+            <button *ngIf="!NuevoProducto" pButton type="button" (click)="eliminarProducto()" label="Eliminar" class="p-button-danger ml-5"></button>
+         </div>
+    </form>
+        </div>
+    
+    <!-- contenedor imagen -->
+    <div class=" flex justify-content-center" style="width:50% ;">
+        
+       <div class="flex">
+           <img style="width: 85%; height: 85%;" *ngIf="producto" [src]="producto.img" alt="">
+       </div>
+       
+        
+    </div>
+    
+    
+</div>
+</p-card>
+</div>
+<h1>producto</h1>
+<pre>{{producto | json}} </pre>
+
+
+<h1>valido</h1>
+<pre>{{formulario.valid}}</pre>
+
+<h1>formulario</h1>
+<pre>{{formulario.controls['nombre'].errors| json}}</pre>
+
+<pre>{{formulario.controls['nombre'].valid}}</pre> -->

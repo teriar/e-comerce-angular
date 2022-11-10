@@ -1,0 +1,25 @@
+
+<div class="flex  justify-content-center flex-wrap card-container ">
+    <p-card class="m-3 card-container text-center tarjeta " [header]="producto.nombre | titlecase" *ngFor="let producto of Productos" >
+        
+        <img [src]="producto.img" alt="img">
+        <p>
+            {{producto.descripcion }}
+        </p>
+        <!-- <p-messages [value]="producto.disponible"></p-messages> -->
+        <div>
+          <p> {{producto.precio |currency:'CLP $'}} </p>
+          <br>
+        </div>
+        <div class="flex">
+
+            <p-button class="" label="Editar" [hidden]="!editable" [routerLink]="['/producto/', producto._id]"></p-button>
+            <span class="spacer"></span>  
+            <p-button class="" (click)="mensaje(producto)" [hidden]="editable"  label="Comprar" ></p-button>
+        </div>
+    </p-card>
+</div>
+
+<p-confirmDialog header="Inicicar session" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<p-toast position="top-right" key="agregado"></p-toast>

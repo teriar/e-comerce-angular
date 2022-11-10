@@ -1,0 +1,10 @@
+<div class="flex flex-row-reverse ">
+   <select #seleccionado name="" id="" (change)="porCategoria(seleccionado.value)">
+    <option >TODOS</option>
+    <option *ngFor=" let item of categorias" >{{item.nombre}}</option>
+   </select>
+</div>
+<app-tarjeta [Productos]="arrProductos" (Comprar)="mensaje($event)" [editable]="editar"></app-tarjeta>
+
+
+

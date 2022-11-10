@@ -1,0 +1,51 @@
+
+<p-sidebar [(visible)]="display">
+  <div class="slider-desc ">
+
+    <h3 >Sistema de compras</h3>
+    <p>Este es un sistema de compras para productos de cafe y reposteria a modo de presentacion de trabajo.</p>
+    <h3>Front:</h3>
+    <p>Este sistema esta utilizando las siguientes tecnologias en el area del Front:</p>
+    <ul class="text-left">
+      <li *ngFor="let frontItem of front ">{{frontItem}}</li>
+    </ul>
+    <h3>Backend:</h3>
+    <p>Este sistema esta utilizando las siguientes tecnologias en el area del Backend</p>
+    <ul class="text-left">
+      <li *ngFor="let backendItem of backend">{{backendItem}}</li>
+    </ul>
+    <h3>CI/CD:</h3>
+    <p>Este sistema esta utilizando las siguientes tecnologias de CI/CD:</p>
+
+    <p>  sistema e-comerce con backen en node, para iniciar dirigirse a productos y esperar a que heroku arranque servidor</p>
+    <ul>
+      <li *ngFor="let cicd of ciCD ">{{cicd}}</li>
+    </ul>
+    <div class="flex mt-5">
+      <button pButton type="button" icon=" pi pi-briefcase" label="Repositorio front" class="p-button-outlined p-button-warning p-button-sm"></button>
+      
+      <span class="spacer"></span>
+      <button pButton type="button"  icon=" pi pi-briefcase" label="Repositorio backend" class="p-button-outlined p-button-sm"></button>
+    </div>
+
+  </div>
+</p-sidebar>
+
+<p-sidebar [(visible)]="carrito" position="right">
+  <app-carrito [cargar]="this.actualizarCarro"></app-carrito>
+</p-sidebar>
+
+
+<p-menubar [model]="items">
+  
+    <img src="./favicon.ico" alt="">
+</p-menubar>
+
+<div class="mt-5">
+  <router-outlet></router-outlet>
+  
+</div>
+
+
+ 
+
